@@ -1,0 +1,41 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .step { fill: #f0f4ff; stroke: #4a6da7; stroke-width: 2 }
+    .arrow { stroke: #4a6da7; stroke-width: 2; marker-end: url(#arrowhead) }
+    .text { font-family: 'Microsoft YaHei'; font-size: 14px; fill: #2c3e50 }
+    #arrowhead { fill: #4a6da7 }
+  </style>
+  
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" />
+    </marker>
+  </defs>
+
+  <rect class="step" x="100" y="50" width="200" height="80" rx="10"/>
+  <text class="text" x="200" y="90" text-anchor="middle">检测新版本</text>
+
+  <path class="arrow" d="M200 130v60" />
+  
+  <rect class="step" x="100" y="200" width="200" height="80" rx="10"/>
+  <text class="text" x="200" y="240" text-anchor="middle">下载更新包</text>
+
+  <path class="arrow" d="M200 280v60" />
+
+  <rect class="step" x="100" y="350" width="200" height="80" rx="10"/>
+  <text class="text" x="200" y="390" text-anchor="middle">验证数字签名</text>
+
+  <path class="arrow" d="M200 430v60" />
+
+  <rect class="step" x="100" y="500" width="200" height="80" rx="10"/>
+  <text class="text" x="200" y="540" text-anchor="middle">静默安装更新</text>
+
+  <path class="arrow" d="M450 90h150" />
+  <rect class="step" x="600" y="50" width="200" height="80" rx="10"/>
+  <text class="text" x="700" y="90" text-anchor="middle">更新失败处理</text>
+
+  <path class="arrow" d="M700 130v60" />
+  
+  <rect class="step" x="600" y="200" width="200" height="80" rx="10"/>
+  <text class="text" x="700" y="240" text-anchor="middle">回滚旧版本</text>
+</svg>

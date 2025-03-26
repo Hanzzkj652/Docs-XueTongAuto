@@ -1,0 +1,40 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="#f5f5f5"/>
+  <g transform="translate(100,80)">
+    <!-- 步骤1 -->
+    <rect x="0" y="0" width="120" height="60" rx="10" fill="#4CAF50" stroke="#388E3C"/>
+    <text x="60" y="35" text-anchor="middle" fill="white">扫描二维码</text>
+    
+    <!-- 箭头 -->
+    <path d="M130,30 L170,30" stroke="#388E3C" stroke-width="2" marker-end="url(#arrow)"/>
+    
+    <!-- 步骤2 -->
+    <rect x="180" y="0" width="120" height="60" rx="10" fill="#4CAF50" stroke="#388E3C"/>
+    <text x="240" y="35" text-anchor="middle" fill="white">填写备注</text>
+    
+    <!-- 箭头 -->
+    <path d="M310,30 L350,30" stroke="#388E3C" stroke-width="2" marker-end="url(#arrow)"/>
+    
+    <!-- 步骤3 -->
+    <rect x="360" y="0" width="120" height="60" rx="10" fill="#4CAF50" stroke="#388E3C"/>
+    <text x="420" y="35" text-anchor="middle" fill="white">保存凭证</text>
+    
+    <!-- 箭头 -->
+    <path d="M440,30 L480,30" stroke="#388E3C" stroke-width="2" marker-end="url(#arrow)"/>
+    
+    <!-- 步骤4 -->
+    <rect x="500" y="0" width="120" height="60" rx="10" fill="#4CAF50" stroke="#388E3C"/>
+    <text x="560" y="35" text-anchor="middle" fill="white">发送凭证</text>
+    
+    <!-- 警告图标 -->
+    <g transform="translate(300,120)">
+      <path d="M12 2L2 22 22 22Z" fill="none" stroke="#FFC107" stroke-width="2"/>
+      <text x="12" y="18" text-anchor="middle" font-size="12" fill="#FFC107">!</text>
+    </g>
+  </g>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#388E3C"/>
+    </marker>
+  </defs>
+</svg>

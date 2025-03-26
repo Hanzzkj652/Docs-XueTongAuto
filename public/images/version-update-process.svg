@@ -1,0 +1,46 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 300'>
+  <style>
+    .step { fill: #f0f8ff; stroke: #4a90e2; stroke-width: 2; rx: 8 }
+    .arrow { stroke: #50b83c; stroke-width: 3; marker-end: url(#arrowhead) }
+    text { font-family: 'Microsoft YaHei'; font-size: 14px; fill: #333 }
+    .title { font-size: 18px; fill: #2d353c }
+  </style>
+  
+  <defs>
+    <marker id='arrowhead' markerWidth='10' markerHeight='7' refX='9' refY='3.5' orient='auto'>
+      <polygon points='0 0, 10 3.5, 0 7' fill='#50b83c'/>
+    </marker>
+  </defs>
+
+  <text class='title' x='400' y='30' text-anchor='middle'>版本更新协议机制流程图</text>
+
+  <!-- 流程步骤 -->
+  <rect class='step' x='50' y='60' width='160' height='80'/>
+  <text x='130' y='100' text-anchor='middle'>版本检测</text>
+
+  <rect class='step' x='270' y='60' width='160' height='80'/>
+  <text x='350' y='100' text-anchor='middle'>更新类型判断</text>
+
+  <rect class='step' x='490' y='60' width='160' height='80'/>
+  <text x='570' y='100' text-anchor='middle'>协议处理</text>
+
+  <!-- 判断分支 -->
+  <path class='arrow' d='M210 100h60'/>
+  <path class='arrow' d='M430 100h60'/>
+
+  <!-- 版本类型分支 -->
+  <path class='arrow' d='M350 140v40'/>
+  <text x='350' y='200' text-anchor='middle'>主版本(vX.0.0)</text>
+  <path class='arrow' d='M350 220v40'/>
+  <text x='350' y='270' text-anchor='middle'>自动终止旧协议</text>
+
+  <path class='arrow' d='M350 140l-100 40'/>
+  <text x='250' y='200' text-anchor='middle'>次版本(vX.Y.0)</text>
+  <path class='arrow' d='M250 220v40'/>
+  <text x='250' y='270' text-anchor='middle'>手动确认更新</text>
+
+  <path class='arrow' d='M350 140l100 40'/>
+  <text x='450' y='200' text-anchor='middle'>修订版本(vX.Y.Z)</text>
+  <path class='arrow' d='M450 220v40'/>
+  <text x='450' y='270' text-anchor='middle'>自动继承协议</text>
+</svg>

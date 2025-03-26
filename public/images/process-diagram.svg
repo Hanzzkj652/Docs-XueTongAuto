@@ -1,0 +1,25 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .step { fill: #f0f4ff; stroke: #4a6da8; stroke-width: 2 }
+    .arrow { stroke: #4a6da8; stroke-width: 3; marker-end: url(#arrowhead) }
+    text { font-family: 'Microsoft YaHei', sans-serif; font-size: 14px }
+  </style>
+  
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#4a6da8"/>
+    </marker>
+  </defs>
+
+  <rect class="step" x="100" y="100" width="200" height="80" rx="10"/>
+  <text x="200" y="140" text-anchor="middle">身份验证</text>
+  
+  <rect class="step" x="100" y="220" width="200" height="80" rx="10"/>
+  <text x="200" y="260" text-anchor="middle">使用承诺</text>
+  
+  <rect class="step" x="100" y="340" width="200" height="80" rx="10"/>
+  <text x="200" y="380" text-anchor="middle">资源交付</text>
+  
+  <path class="arrow" d="M200,180 L200,220"/>
+  <path class="arrow" d="M200,300 L200,340"/>
+</svg>

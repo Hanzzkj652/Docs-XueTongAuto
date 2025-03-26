@@ -1,0 +1,460 @@
+/**
+ * Customize default theme styling by overriding CSS variables:
+ * https://github.com/vuejs/vitepress/blob/main/src/client/theme-default/styles/vars.css
+ */
+
+/**
+ * Colors
+ *
+ * Each colors have exact same color scale system with 3 levels of solid
+ * colors with different brightness, and 1 soft color.
+ *
+ * - `XXX-1`: The most solid color used mainly for colored text. It must
+ *   satisfy the contrast ratio against when used on top of `XXX-soft`.
+ *
+ * - `XXX-2`: The color used mainly for hover state of the button.
+ *
+ * - `XXX-3`: The color for solid background, such as bg color of the button.
+ *   It must satisfy the contrast ratio with pure white (#ffffff) text on
+ *   top of it.
+ *
+ * - `XXX-soft`: The color used for subtle background such as custom container
+ *   or badges. It must satisfy the contrast ratio when putting `XXX-1` colors
+ *   on top of it.
+ *
+ *   The soft color must be semi transparent alpha channel. This is crucial
+ *   because it allows adding multiple "soft" colors on top of each other
+ *   to create a accent, such as when having inline code block inside
+ *   custom containers.
+ *
+ * - `default`: The color used purely for subtle indication without any
+ *   special meanings attached to it such as bg color for menu hover state.
+ *
+ * - `brand`: Used for primary brand colors, such as link text, button with
+ *   brand theme, etc.
+ *
+ * - `tip`: Used to indicate useful information. The default theme uses the
+ *   brand color for this by default.
+ *
+ * - `warning`: Used to indicate warning to the users. Used in custom
+ *   container, badges, etc.
+ *
+ * - `danger`: Used to show error, or dangerous message to the users. Used
+ *   in custom container, badges, etc.
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vp-c-default-1: var(--vp-c-gray-1);
+  --vp-c-default-2: var(--vp-c-gray-2);
+  --vp-c-default-3: var(--vp-c-gray-3);
+  --vp-c-default-soft: var(--vp-c-gray-soft);
+
+  --vp-c-red-1: #ff3b30;
+  --vp-c-red-2: #ff453a;
+  --vp-c-red-3: #ff6961;
+  --vp-c-red-soft: rgba(255, 59, 48, 0.14);
+
+  --vp-c-brand-1: var(--vp-c-red-1);
+  --vp-c-brand-2: var(--vp-c-red-2);
+  --vp-c-brand-3: var(--vp-c-red-3);
+  --vp-c-brand-soft: var(--vp-c-red-soft);
+
+  --vp-c-tip-1: var(--vp-c-brand-1);
+  --vp-c-tip-2: var(--vp-c-brand-2);
+  --vp-c-tip-3: var(--vp-c-brand-3);
+  --vp-c-tip-soft: var(--vp-c-brand-soft);
+
+  --vp-c-warning-1: var(--vp-c-yellow-1);
+  --vp-c-warning-2: var(--vp-c-yellow-2);
+  --vp-c-warning-3: var(--vp-c-yellow-3);
+  --vp-c-warning-soft: var(--vp-c-yellow-soft);
+
+  --vp-c-danger-1: var(--vp-c-red-1);
+  --vp-c-danger-2: var(--vp-c-red-2);
+  --vp-c-danger-3: var(--vp-c-red-3);
+  --vp-c-danger-soft: var(--vp-c-red-soft);
+}
+
+/**
+ * Component: Button
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vp-button-brand-border: transparent;
+  --vp-button-brand-text: var(--vp-c-white);
+  --vp-button-brand-bg: var(--vp-c-brand-3);
+  --vp-button-brand-hover-border: transparent;
+  --vp-button-brand-hover-text: var(--vp-c-white);
+  --vp-button-brand-hover-bg: var(--vp-c-brand-2);
+  --vp-button-brand-active-border: transparent;
+  --vp-button-brand-active-text: var(--vp-c-white);
+  --vp-button-brand-active-bg: var(--vp-c-brand-1);
+}
+
+/* 自定义背景装饰 */
+:root {
+  --vp-bg-pattern-opacity: 0.05;
+}
+
+.dark {
+  --vp-bg-pattern-opacity: 0.08;
+}
+
+.VPContent {
+  position: relative;
+  overflow: hidden;
+}
+
+.VPContent::before, .VPContent::after {
+  content: '';
+  position: fixed;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.VPContent::before {
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(255, 59, 48, var(--vp-bg-pattern-opacity)) 0%, transparent 50%);
+  animation: rotate 60s linear infinite;
+}
+
+.VPContent::after {
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  background: 
+    linear-gradient(45deg, rgba(255, 59, 48, calc(var(--vp-bg-pattern-opacity) * 0.5)) 0%, transparent 75%),
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30,0 L60,30 L30,60 L0,30 Z' fill='none' stroke='rgba(255,59,48,0.1)' stroke-width='0.5'/%3E%3Ccircle cx='30' cy='30' r='1' fill='rgba(255,59,48,0.2)'/%3E%3C/svg%3E");
+  background-size: 100% 100%, 60px 60px;
+  background-repeat: no-repeat, repeat;
+  animation: flow 30s linear infinite;
+  opacity: 0.7;
+}
+
+@keyframes flow {
+  0% { background-position: 0 0, 0 0; }
+  100% { background-position: 0 0, 60px 60px; }
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 自定义按钮样式 */
+.VPButton {
+  border-radius: 8px;
+  padding: 0 20px;
+  transition: all 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+
+.VPButton.brand {
+  background: linear-gradient(135deg, var(--vp-c-brand-3) 0%, var(--vp-c-brand-2) 100%);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.VPButton.brand:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, var(--vp-c-brand-2) 0%, var(--vp-c-brand-1) 100%);
+}
+
+.VPButton.alt {
+  border: 2px solid var(--vp-c-brand-1);
+  color: var(--vp-c-brand-1);
+  background: transparent;
+}
+
+.VPButton.alt:hover {
+  color: var(--vp-c-white);
+  background: var(--vp-c-brand-1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* 深色模式适配 */
+.dark .VPButton.brand {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.dark .VPButton.brand:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.dark .VPButton.alt {
+  border-color: var(--vp-c-brand-2);
+  color: var(--vp-c-brand-2);
+}
+
+.dark .VPButton.alt:hover {
+  background: var(--vp-c-brand-2);
+  border-color: var(--vp-c-brand-2);
+}
+
+/**
+ * Component: Home
+ * -------------------------------------------------------------------------- */
+
+ :root {
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: -webkit-linear-gradient(
+    120deg,
+    #ff3b30 30%,
+    #ff6961
+  );
+
+  --vp-home-hero-image-background-image: linear-gradient(
+    -45deg,
+    #ff3b30 50%,
+    #ff6961 50%
+  );
+  --vp-home-hero-image-filter: blur(44px);
+}
+
+@media (min-width: 640px) {
+  :root {
+    --vp-home-hero-image-filter: blur(56px);
+  }
+}
+
+@media (min-width: 960px) {
+  :root {
+    --vp-home-hero-image-filter: blur(68px);
+  }
+} 
+
+
+/* 自定义features卡片样式 */
+.VPFeatures {
+  gap: 24px;
+}
+
+.VPFeatures .VPFeature {
+  background: linear-gradient(135deg, var(--vp-c-bg) 0%, var(--vp-c-bg-soft) 100%);
+  border: 2px solid var(--vp-c-divider);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px var(--vp-c-shadow-3);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 32px;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.VPFeatures .VPFeature:hover {
+  background: linear-gradient(135deg, var(--vp-c-bg-soft) 0%, var(--vp-c-bg-mute) 100%);
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 12px 36px var(--vp-c-shadow-2);
+  border-color: var(--vp-c-brand-1);
+}
+
+.VPFeatures .VPFeature .title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+  color: var(--vp-c-brand-1);
+  transition: all 0.3s ease;
+  position: relative;
+  padding-bottom: 0.5rem;
+  background: linear-gradient(120deg, var(--vp-c-brand-1), var(--vp-c-brand-2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transform-origin: left;
+  letter-spacing: -0.02em;
+}
+
+.VPFeatures .VPFeature:hover .title {
+  transform: scale(1.02);
+  letter-spacing: 0;
+}
+
+.VPFeatures .VPFeature .title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--vp-c-brand-1), var(--vp-c-brand-2));
+  transition: all 0.3s ease;
+  transform-origin: left;
+}
+
+.VPFeatures .VPFeature:hover .title::after {
+  width: 100%;
+  transform: scaleX(1);
+}
+
+.VPFeatures .VPFeature .details {
+  color: var(--vp-c-text-2);
+  line-height: 1.7;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  margin-top: 0.5rem;
+  opacity: 0.9;
+  transform: translateY(0);
+}
+
+/* 深色模式适配 */
+.dark .VPFeature {
+  background: linear-gradient(135deg, var(--vp-c-bg) 0%, var(--vp-c-bg-soft) 100%);
+  border-color: var(--vp-c-divider-dark-1);
+  box-shadow: 0 4px 20px var(--vp-c-shadow-1);
+}
+
+.dark .VPFeature:hover {
+  background: linear-gradient(135deg, var(--vp-c-bg-soft) 0%, var(--vp-c-bg-mute) 100%);
+  border-color: var(--vp-c-brand-1);
+  box-shadow: 0 12px 36px var(--vp-c-shadow-2);
+}
+
+.dark .VPFeature .title {
+  color: var(--vp-c-brand-1);
+}
+
+.dark .VPFeature .details {
+  color: var(--vp-c-text-1);
+}
+
+.VPFeatures .VPFeature:hover .details {
+  color: var(--vp-c-text-1);
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+.VPFeatures .VPFeature::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(99, 102, 241, 0) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.VPFeatures .VPFeature:hover::before {
+  opacity: 1;
+}
+
+.VPFeatures .VPFeature::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--vp-c-brand-1), var(--vp-c-brand-2));
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.VPFeatures .VPFeature:hover::after {
+  width: 100%;
+}
+
+/**
+ * Component: Custom Block
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vp-custom-block-tip-border: transparent;
+  --vp-custom-block-tip-text: var(--vp-c-text-1);
+  --vp-custom-block-tip-bg: var(--vp-c-brand-soft);
+  --vp-custom-block-tip-code-bg: var(--vp-c-brand-soft);
+}
+
+/* 代码块样式优化 */
+.vp-doc div[class*='language-'] {
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  margin: 24px 0;
+  transition: all 0.3s ease;
+}
+
+.vp-doc div[class*='language-']:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.vp-doc div[class*='language-'] code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.95em;
+  line-height: 1.6;
+}
+
+.vp-doc [class*='language-'] pre {
+  padding: 24px;
+}
+
+.vp-doc div[class*='language-'] .line-numbers {
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+/* 提示框样式优化 */
+.custom-block {
+  border-radius: 12px;
+  margin: 24px 0;
+  padding: 20px 24px;
+  transition: all 0.3s ease;
+  border-left-width: 4px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.custom-block.tip {
+  border-color: var(--vp-c-brand-1);
+  background: linear-gradient(135deg, var(--vp-c-brand-soft), transparent);
+}
+
+.custom-block.warning {
+  border-color: var(--vp-c-warning-1);
+  background: linear-gradient(135deg, var(--vp-c-warning-soft), transparent);
+}
+
+.custom-block.danger {
+  border-color: var(--vp-c-danger-1);
+  background: linear-gradient(135deg, var(--vp-c-danger-soft), transparent);
+}
+
+.custom-block:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+.custom-block .custom-block-title {
+  font-size: 1.1em;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.dark .custom-block {
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+}
+
+.dark .custom-block:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/**
+ * Component: Algolia
+ * -------------------------------------------------------------------------- */
+
+.DocSearch {
+  --docsearch-primary-color: var(--vp-c-brand-1) !important;
+}
+
