@@ -1,0 +1,8 @@
+{
+  "name": "xuetong-docs",
+  "compatibility_date": "2025-03-26",
+  "pages_build_output_dir": ".vitepress/dist",
+  "site": {
+    "entry-point": ".vitepress/dist"
+  }
+}
