@@ -72,8 +72,9 @@
 
 
 :::warning
+
 > 配置完成后请重启应用程序生效
 
-> 详细配置说明请参考[使用指南](../guide/use-method.md)
+> 详细配置说明请参考[使用指南](/guide/use-method)
 
 :::
