@@ -32,6 +32,7 @@ export default defineConfig({
         items: [
           { text: '获取渠道', link: '/guide/how-to-get' },
           { text: '使用方法', link: '/guide/use-method' },
+          { text:'关于题库',link:'/guide/question-bank'},
           { text: '如何捐赠(Donate)', link: '/guide/how-to-donate' },
           { text: '用户隐私与安全性', link: '/guide/privacy-security' }
         ]

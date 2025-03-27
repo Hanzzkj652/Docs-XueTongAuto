@@ -1,3 +1,11 @@
+# 欢迎使用XueTongAuto
+> 请给[作者](https://github.com/Hanzzkj652)点点Fllow捏🤗
+:::tip
+💡 欢迎使用XueTongAuto
+
+😊 如果您喜欢本工具,请考虑赞助我们,您的赞助是我们更新的动力
+
+:::
 
 # 项目概述
 
